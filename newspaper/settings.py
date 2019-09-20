@@ -25,7 +25,7 @@ SECRET_KEY = 'h9*4#svvfb%sx3e(6+9t7oyf5@hch!wkowss6sm&1^r%cb#2np'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #local
     'articles.apps.ArticlesConfig',
     'users.apps.UsersConfig',
-]
+       # 3rd Party
+    'crispy_forms', 
+    
+   ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +127,11 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
